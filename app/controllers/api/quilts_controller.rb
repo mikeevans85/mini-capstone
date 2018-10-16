@@ -16,8 +16,17 @@ class Api::QuiltsController < ApplicationController
   end
 
   def show
-    input = params["id"]
-    @quilt = Product.find_by(id: input)
+    @quilt = Product.find_by(id: params["id"])
+    render "show.json.jbuilder"
+  end
+
+  def update
+    @quilt = Product.find_by(id: params["id"])
+    @quilt.name = params["name"] || @quilt.name
+    @quilt.size = params["size"] || @quilt.size
+    @quilt.description = params["description"] || @quilt.description
+    @quilt.price = params["price"] || @quilt.price
+    @quilt.save
     render "show.json.jbuilder"
   end
 end
