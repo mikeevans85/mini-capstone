@@ -29,4 +29,10 @@ class Api::QuiltsController < ApplicationController
     @quilt.save
     render "show.json.jbuilder"
   end
+
+  def destroy
+    @quilt = Product.find_by(id: params["id"])
+    @quilt.destroy
+    render json: {message: "Your quilt has sadly and successfully been deleted."}
+  end
 end
