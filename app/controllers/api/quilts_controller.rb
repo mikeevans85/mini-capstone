@@ -1,6 +1,14 @@
 class Api::QuiltsController < ApplicationController
   def index
     @quilts = Product.all
+    @quilts = @quilts.order(:id => :asc)
+    input_name = params["name"]
+    input_price = params["price"]
+    if input_name
+      @quilts = @quilts.where("name ILIKE ?", "%#{input_name}%")
+    elsif input_price
+      @quilts = @quilts.where("price = ?", "#{input_price}")
+    end
     render "index.json.jbuilder"
   end
 
