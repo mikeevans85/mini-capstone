@@ -1,7 +1,7 @@
 class Api::QuiltsController < ApplicationController
   def index
     @quilts = Product.all
-    @quilts = @quilts.order(:id => :asc)
+    @quilts = @quilts.order(:id => :desc)
     input_name = params["name"]
     input_price = params["price"]
     if input_name
