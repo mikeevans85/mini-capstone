@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   validates :description, length: {maximum: 500,
     too_long: "Description must be 500 characters or less."}
 
-
   def is_discounted
     price < 100
   end

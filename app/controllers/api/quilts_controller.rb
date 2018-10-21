@@ -20,7 +20,11 @@ class Api::QuiltsController < ApplicationController
       price: params["price"],
       )
     @quilt.save
-    render "show.json.jbuilder"
+    if @quilt.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @quilt.errors.full_messages}, status: 422
+    end
   end
 
   def show
@@ -34,8 +38,13 @@ class Api::QuiltsController < ApplicationController
     @quilt.size = params["size"] || @quilt.size
     @quilt.description = params["description"] || @quilt.description
     @quilt.price = params["price"] || @quilt.price
+    # @quilt.image_url = params["image"] || @quilt.image_url
     @quilt.save
-    render "show.json.jbuilder"
+    if @quilt.save
+      render "show.json.jbuilder"
+    else
+      render json: {errors: @quilt.errors.full_messages}, status: 422
+    end
   end
 
   def destroy
