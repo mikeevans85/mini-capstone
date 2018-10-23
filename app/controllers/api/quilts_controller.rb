@@ -18,9 +18,13 @@ class Api::QuiltsController < ApplicationController
       size: params["size"],
       description: params["description"],
       price: params["price"],
+      supplier_id: params["supplier_id"]
       )
     @quilt.save
     if @quilt.save
+      ImageBank.create(
+        url: params["image_url"],
+        product_id: @quilt.id)
       render "show.json.jbuilder"
     else
       render json: {errors: @quilt.errors.full_messages}, status: 422
