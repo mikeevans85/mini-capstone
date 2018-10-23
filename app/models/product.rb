@@ -17,11 +17,7 @@ class Product < ApplicationRecord
     return price.to_i + tax
   end
 
-  def supplier
-    Supplier.where(id: supplier_id)
-  end
+  belongs_to :supplier
 
-  def images
-    ImageBank.where(product_id: id)
-  end
+  has_many :image_bank
 end
