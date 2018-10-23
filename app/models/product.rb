@@ -5,6 +5,10 @@ class Product < ApplicationRecord
   validates :description, length: {maximum: 500,
     too_long: "Description must be 500 characters or less."}
 
+  belongs_to :supplier
+
+  has_many :image_bank
+
   def is_discounted
     price.to_i < 100
   end
@@ -17,7 +21,7 @@ class Product < ApplicationRecord
     return price.to_i + tax
   end
 
-  belongs_to :supplier
-
-  has_many :image_bank
+  def image_url_list
+    image_bank.map { |image| image.url }
+  end
 end
