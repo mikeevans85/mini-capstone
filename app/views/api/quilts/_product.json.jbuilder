@@ -6,3 +6,4 @@ json.description quilt.description
 json.discount quilt.is_discounted
 json.tax quilt.tax
 json.total quilt.total
+json.supplier_id quilt.supplier_id

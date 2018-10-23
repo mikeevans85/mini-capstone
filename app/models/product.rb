@@ -6,14 +6,14 @@ class Product < ApplicationRecord
     too_long: "Description must be 500 characters or less."}
 
   def is_discounted
-    price < 100
+    price.to_i < 100
   end
 
   def tax
-    return price * 0.09
+    return price.to_i * 0.09
   end
 
   def total
-    return price + tax
+    return price.to_i + tax
   end
 end
