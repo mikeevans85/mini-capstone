@@ -20,4 +20,8 @@ class Product < ApplicationRecord
   def supplier
     Supplier.where(id: supplier_id)
   end
+
+  def images
+    ImageBank.where(product_id: id)
+  end
 end

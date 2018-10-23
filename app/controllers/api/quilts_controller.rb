@@ -38,7 +38,6 @@ class Api::QuiltsController < ApplicationController
     @quilt.size = params["size"] || @quilt.size
     @quilt.description = params["description"] || @quilt.description
     @quilt.price = params["price"] || @quilt.price
-    # @quilt.image_url = params["image"] || @quilt.image_url
     @quilt.save
     if @quilt.save
       render "show.json.jbuilder"
