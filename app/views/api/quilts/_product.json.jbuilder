@@ -8,3 +8,4 @@ json.tax quilt.tax
 json.total quilt.total
 json.supplier quilt.supplier
 json.images quilt.image_url_list
+json.current_user current_user
