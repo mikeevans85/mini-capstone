@@ -1,6 +1,9 @@
 class Api::OrdersController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @list = Order.all
+    @list = @list.order(:id => :asc)
     render "index.json.jbuilder"
   end
 
