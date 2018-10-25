@@ -1,7 +1,7 @@
 class Api::OrdersController < ApplicationController
   def index
     @list = Order.all
-    render "order.json.jbuilder"
+    render "index.json.jbuilder"
   end
 
   def create
