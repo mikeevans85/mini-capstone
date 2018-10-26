@@ -1,4 +1,6 @@
 class Api::QuiltsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @quilts = Product.all
     @quilts = @quilts.order(:id => :asc)
