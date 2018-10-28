@@ -4,6 +4,12 @@ class Api::QuiltsController < ApplicationController
   def index
     @quilts = Product.all
     @quilts = @quilts.order(:id => :asc)
+
+    if params["category"]
+      category = Category.find_by(name: params["category"])
+      @quilts = category.products
+    end
+
     input_name = params["name"]
     input_price = params["price"]
     if input_name
@@ -11,6 +17,7 @@ class Api::QuiltsController < ApplicationController
     elsif input_price
       @quilts = @quilts.where("price = ?", "#{input_price}")
     end
+
     render "index.json.jbuilder"
   end
 

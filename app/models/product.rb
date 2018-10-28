@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   has_many :image_bank
   has_many :order
   has_many :category_products
+  has_many :categories, through: :category_products
 
   def is_discounted
     price.to_i < 100
@@ -25,5 +26,9 @@ class Product < ApplicationRecord
 
   def image_url_list
     image_bank.map { |image| image.url }
+  end
+
+  def category_name
+    categories.map { |category| category.name }
   end
 end
