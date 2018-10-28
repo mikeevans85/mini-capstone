@@ -9,6 +9,7 @@ class Product < ApplicationRecord
 
   has_many :image_bank
   has_many :order
+  has_many :category_products
 
   def is_discounted
     price.to_i < 100
