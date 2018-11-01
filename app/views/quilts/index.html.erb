@@ -1,0 +1,12 @@
+<% @quilts.each do |quilt| %>
+  <h1><%= quilt.name %></h1>
+  <h4><%= quilt.price %></h4>
+  <h4><%= quilt.size %></h4>
+  <p><%= quilt.description %></p>
+  <p><%= quilt.tax %></p>
+  <p><%= quilt.total %></p>
+  <p><%= quilt.supplier.name %></p>
+  <p><%= quilt.image_url_list %></p>
+  <p><%= quilt.category_name %></p>
+  <a href="/quilts/<%= quilt.id %>">Quilt Info</a>
+<% end %>

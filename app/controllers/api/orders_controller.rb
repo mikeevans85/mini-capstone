@@ -2,7 +2,7 @@ class Api::OrdersController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @list = Order.all
+    @list = current_user.orders
     @list = @list.order(:id => :asc)
     render "index.json.jbuilder"
   end
@@ -20,13 +20,13 @@ class Api::OrdersController < ApplicationController
 
     calc_total = calc_subtotal + calc_tax
 
-    product = CartedProduct.where(user_id: current_user.id, status: "Carted")
-    product= product.order(:id => :asc)
     @order = Order.new(
       user_id: current_user.id,
       subtotal: calc_subtotal,
       tax: calc_tax,
-      total: calc_total)
+      total: calc_total
+      )
+    @order.save
 
     if @order.save
       render json: {message: "Order successfully submitted!"}
@@ -35,8 +35,7 @@ class Api::OrdersController < ApplicationController
     end
 
     carted_products.each do |carted_product|
-      carted_product.update(status: "Purchased", order_id: @order.id)
+      carted_product.update.all(status: "Purchased", order_id: @order.id)
     end
-
   end
 end

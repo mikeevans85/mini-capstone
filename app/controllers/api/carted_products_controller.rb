@@ -11,13 +11,18 @@ class Api::CartedProductsController < ApplicationController
       product_id: params["product_id"].to_i,
       quantity: params["quantity"].to_i,
       status: "Carted",
-      order_id: nil
       )
-    @carted_product.save
     if @carted_product.save
       render "show.json.jbuilder"
     else
       render json: {errors: @carted_product.errors.full_messages}, status: :bad_request
     end
+  end
+
+  def destroy
+    @carted_product = CartedProduct.find_by(id: params[:id])
+    @carted_product.status = "removed"
+    @carted_product.save
+    render json: {message: "Product successfully deleted!"}
   end
 end
