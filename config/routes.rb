@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   end
 
   get "/quilts" => "quilts#index"
+  get "/quilts/new" => "quilts#new"
+  post "/quilts" => "quilts#create"
   get "quilts/:id" => "quilts#show"
 end
