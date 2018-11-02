@@ -1,11 +1,14 @@
 <% @quilts.each do |quilt| %>
   <h1><%= quilt.name %></h1>
-  <h4><%= quilt.price %></h4>
-  <h4><%= quilt.size %></h4>
+  <% quilt.image_url_list.each do |image| %>
+  <h4><%= image %></h4>
+  <% end %>
+  <h4>Price: <%= quilt.price %></h4>
+  <h4>Size: <%= quilt.size %></h4>
   <p><%= quilt.description %></p>
-  <p><%= quilt.tax %></p>
-  <p><%= quilt.total %></p>
-  <p><%= quilt.supplier.name %></p>
+  <p>Tax: <%= quilt.tax.round(2) %></p>
+  <p>Total: <%= quilt.total %></p>
+  <p>Supplier: <%= quilt.supplier.name %></p>
   <img src="<%= quilt.image_url_list %>">
   <a href="/quilts/<%= quilt.id %>"><button>Quilt Info</button></a>
 <% end %>

@@ -5,8 +5,6 @@
 <p><%= @quilt.tax %></p>
 <p><%= @quilt.total %></p>
 <p><%= @quilt.supplier.name %></p>
-<p><%= @quilt.image_url_list %></p>
-<p><%= @quilt.category_name %></p>
-<a href="/quilts">Back to all quilts</a><br>
-<a href="/quilts/<%= @quilt.id %>/edit">Edit this quilt</a><br>
-<a href="/quilts/<%= @quilt.id %>"data-method="delete">Delete this quilt</a>
+<a href="/quilts"><button>Back to all quilts</button></a><br>
+<a href="/quilts/<%= @quilt.id %>/edit"><button>Edit this quilt</button></a><br>
+<a href="/quilts/<%= @quilt.id %>"data-method="delete"><button>Delete this quilt</button></a>
