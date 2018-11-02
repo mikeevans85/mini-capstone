@@ -7,4 +7,6 @@
 <p><%= @quilt.supplier.name %></p>
 <p><%= @quilt.image_url_list %></p>
 <p><%= @quilt.category_name %></p>
-<a href="/quilts">Back to all quilts</a>
+<a href="/quilts">Back to all quilts</a><br>
+<a href="/quilts/<%= @quilt.id %>/edit">Edit this quilt</a><br>
+<a href="/quilts/<%= @quilt.id %>"data-method="delete">Delete this quilt</a>

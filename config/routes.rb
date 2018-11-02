@@ -22,5 +22,9 @@ Rails.application.routes.draw do
   get "/quilts" => "quilts#index"
   get "/quilts/new" => "quilts#new"
   post "/quilts" => "quilts#create"
-  get "quilts/:id" => "quilts#show"
+  get "/quilts/:id" => "quilts#show"
+  get "/quilts/:id/edit" => "quilts#edit"
+  patch "/quilts/:id" => "quilts#update"
+  delete "quilts/:id" => "quilts#destroy"
+
 end

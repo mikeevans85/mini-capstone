@@ -1,0 +1,17 @@
+<h1>Edit Quilt</h1>
+<form action="/quilts/<%= @quilt.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div>
+    Name: <input type="text" name="Quilt" value="<%= @quilt.name %>">
+  </div>
+  <div>
+    Price: <input type="text" name="Price" value="<%= @quilt.price %>">
+  </div>
+  <div>
+    Size: <input type="text" name="Size" value="<%= @quilt.size %>">
+  </div>
+  <div>
+    Description: <input type="text" name="Description" value="<%= @quilt.description %>">
+  </div>
+  <input type="submit" value="Edit Quilt">
+</form>
