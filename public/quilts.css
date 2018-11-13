@@ -1,0 +1,8 @@
+body {
+  font-family: "Goudy Old Style",Garamond,"Big Caslon","Times New Roman",serif;
+  background-image: url('squidfingers.jpg');
+}
+
+.jumbotron {
+  opacity: 0.8;
+}
